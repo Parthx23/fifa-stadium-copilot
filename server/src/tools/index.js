@@ -12,6 +12,7 @@ import * as incidents from "./incidents.js";
 import * as lostFound from "./lostFound.js";
 import * as weather from "./weather.js";
 import * as accessibility from "./accessibility.js";
+import * as incidentLog from "./incidentLog.js";
 
 // Every tool the assistant *could* know about. Persona allow-lists in
 // personas.js decide which of these are actually sent to the model per
@@ -25,6 +26,7 @@ export const TOOL_MODULES = {
   search_lost_found: lostFound,
   get_weather_advisory: weather,
   get_accessible_amenities: accessibility,
+  get_incident_log: incidentLog,
 };
 
 export function getDefinition(name) {

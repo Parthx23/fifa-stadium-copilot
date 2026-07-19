@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { runTool, TOOL_MODULES, getDefinition } from "../tools/index.js";
+import { INCIDENT_LOG } from "../data/mockStore.js";
 
 describe("tool registry", () => {
   it("every registered tool has a name-matching definition", () => {
@@ -112,6 +113,32 @@ describe("get_accessible_amenities and get_weather_advisory", () => {
     const result = runTool("get_weather_advisory", { venue: "MetLife Stadium" });
     expect(typeof result.heatAdvisory).toBe("boolean");
     expect(result.heatAdvisory).toBe(result.tempC >= 32);
+  });
+});
+
+describe("get_incident_log", () => {
+  it("returns pre-seeded incidents", () => {
+    const result = runTool("get_incident_log", {});
+    expect(result.incidents.length).toBeGreaterThan(0);
+    expect(result.incidents[0]).toHaveProperty("incidentId");
+    expect(result.incidents[0]).toHaveProperty("severity");
+  });
+
+  it("filters incidents by severity level", () => {
+    const result = runTool("get_incident_log", { severity: "high" });
+    expect(result.incidents.every((inc) => inc.severity === "high")).toBe(true);
+  });
+
+  it("returns a note if no incidents match a severity filter", () => {
+    const originalLog = [...INCIDENT_LOG];
+    INCIDENT_LOG.length = 0;
+    try {
+      const result = runTool("get_incident_log", { severity: "critical" });
+      expect(result.incidents).toEqual([]);
+      expect(result.note).toBeTruthy();
+    } finally {
+      INCIDENT_LOG.push(...originalLog);
+    }
   });
 });
 

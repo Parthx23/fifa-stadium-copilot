@@ -81,6 +81,7 @@ transport status before answering, and lead with anything that needs attention f
       "report_incident",
       "get_weather_advisory",
       "get_match_schedule",
+      "get_incident_log",
     ],
   },
 
@@ -102,6 +103,7 @@ another staff member could act on your answer without asking a follow-up questio
       "get_gate_crowd_density",
       "report_incident",
       "get_wayfinding",
+      "get_incident_log",
     ],
   },
 };

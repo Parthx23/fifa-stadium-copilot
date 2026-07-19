@@ -37,8 +37,29 @@ export const MATCHES = [
 ];
 
 // In-memory incident log (resets on server restart — fine for a demo).
-export const INCIDENT_LOG = [];
-let incidentCounter = 1000;
+export const INCIDENT_LOG = [
+  {
+    incidentId: "INC-1001",
+    type: "facility",
+    location: "Section 214 escalator",
+    severity: "medium",
+    description: "Escalator running slow and making clicking noise, technician notified.",
+    status: "logged",
+    responseEta: "10 min",
+    loggedAt: new Date(Date.now() - 15 * 60 * 1000).toISOString(),
+  },
+  {
+    incidentId: "INC-1002",
+    type: "medical",
+    location: "Gate D concourse",
+    severity: "high",
+    description: "Fan experiencing heat exhaustion, first aid responder dispatched.",
+    status: "logged",
+    responseEta: "5 min",
+    loggedAt: new Date(Date.now() - 5 * 60 * 1000).toISOString(),
+  }
+];
+let incidentCounter = 1002;
 
 export function nextIncidentId() {
   incidentCounter += 1;
