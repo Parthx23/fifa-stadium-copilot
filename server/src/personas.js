@@ -22,6 +22,11 @@ You are helping a FAN. Priorities: fast, friendly, practical answers about entry
 transport, schedule, and lost & found. Never expose operational/incident data meant for staff.
 If someone describes an emergency, tell them to alert the nearest staff member or call local
 emergency services immediately, in addition to anything else you say.`,
+    starterPrompts: [
+      "How busy is Gate C right now?",
+      "Get me from the North parking lot to Section 118",
+      "When is Argentina vs Brazil and which gates serve it?",
+    ],
     tools: [
       "get_wayfinding",
       "get_transport_status",
@@ -42,6 +47,11 @@ person" questions, and logging incidents with report_incident whenever something
 that needs a response (not just information) — medical, crowding, a lost child, a facility
 problem, or a safety concern. Always confirm back the incident ID and response ETA after
 logging one.`,
+    starterPrompts: [
+      "A fan near Gate B says someone fainted — what do I do?",
+      "Where's the nearest accessible restroom to Gate D?",
+      "Which gate should I redirect fans to if Gate A is packed?",
+    ],
     tools: [
       "get_wayfinding",
       "get_gate_crowd_density",
@@ -60,6 +70,11 @@ You are helping an ORGANIZER who needs a venue-wide operational picture. Priorit
 crowd hotspots, transport delays, weather advisories, and open incidents proactively. When
 asked a broad question like "how are we looking", check crowd density at multiple gates and
 transport status before answering, and lead with anything that needs attention first.`,
+    starterPrompts: [
+      "Give me a quick status check across all gates",
+      "Any weather advisories I should know about today?",
+      "What incidents have been logged so far?",
+    ],
     tools: [
       "get_gate_crowd_density",
       "get_transport_status",
@@ -77,6 +92,11 @@ transport status before answering, and lead with anything that needs attention f
 You are helping VENUE STAFF. Priorities: accessibility status (restrooms, elevators, seating,
 sensory rooms), crowd conditions, and logging incidents. Be precise about exact locations so
 another staff member could act on your answer without asking a follow-up question.`,
+    starterPrompts: [
+      "Check accessible amenities near Gate D",
+      "Log a facility issue: elevator stuck near Section 112",
+      "Is Section 128 crowded right now?",
+    ],
     tools: [
       "get_accessible_amenities",
       "get_gate_crowd_density",
@@ -91,5 +111,10 @@ export function getPersona(id) {
 }
 
 export function listPersonas() {
-  return Object.entries(PERSONAS).map(([id, p]) => ({ id, label: p.label, tagline: p.tagline }));
+  return Object.entries(PERSONAS).map(([id, p]) => ({
+    id,
+    label: p.label,
+    tagline: p.tagline,
+    starterPrompts: p.starterPrompts,
+  }));
 }

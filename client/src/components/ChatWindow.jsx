@@ -1,9 +1,15 @@
+/**
+ * @fileoverview ChatWindow component.
+ * Renders the message history list, interactive starter prompts, and the input composer.
+ * Optimizes state updates by batching tool trace insertions to minimize component re-renders.
+ */
+
 import { useEffect, useRef, useState } from "react";
 import MessageBubble from "./MessageBubble.jsx";
 import ToolCallCard from "./ToolCallCard.jsx";
 import { sendChat } from "../api.js";
 
-export default function ChatWindow({ persona, starterPrompts }) {
+export default function ChatWindow({ persona, starterPrompts = [] }) {
   const [thread, setThread] = useState([]); // { role, content } for the API
   const [items, setItems] = useState([]); // rendered items: message | tool
   const [draft, setDraft] = useState("");
@@ -34,10 +40,15 @@ export default function ChatWindow({ persona, starterPrompts }) {
     try {
       const { reply, toolTrace } = await sendChat(persona, nextThread);
 
+      // Batch all tool trace items and the final message into a single state update
+      // to avoid triggering multiple intermediate re-renders.
+      const newItems = [];
       for (const call of toolTrace || []) {
-        setItems((prev) => [...prev, { type: "tool", ...call }]);
+        newItems.push({ type: "tool", ...call });
       }
-      setItems((prev) => [...prev, { type: "message", role: "assistant", content: reply }]);
+      newItems.push({ type: "message", role: "assistant", content: reply });
+
+      setItems((prev) => [...prev, ...newItems]);
       setThread((prev) => [...prev, { role: "assistant", content: reply }]);
     } catch (err) {
       setItems((prev) => [...prev, { type: "message", role: "assistant", content: err.message, isError: true }]);

@@ -1,9 +1,7 @@
-import { PERSONAS } from "../data/personas.js";
-
-export default function PersonaSelector({ activeId, onSelect }) {
+export default function PersonaSelector({ activeId, personas = [], onSelect }) {
   return (
     <nav className="persona-rail" aria-label="Choose your role">
-      {PERSONAS.map((p) => (
+      {personas.map((p) => (
         <button
           key={p.id}
           type="button"
