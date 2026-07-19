@@ -1,3 +1,8 @@
+/**
+ * @fileoverview Weather advisory tool.
+ * Returns current weather conditions and any heat/wind/rain advisory for the venue.
+ * @module tools/weather
+ */
 import { weatherFor, VENUE } from "../data/mockStore.js";
 
 export const definition = {

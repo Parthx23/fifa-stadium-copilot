@@ -1,3 +1,9 @@
+/**
+ * @fileoverview Tool registry — maps tool names to their definitions and run functions.
+ * The persona allow-lists in personas.js decide which of these tools are actually
+ * sent to the Gemini API per request.
+ * @module tools/index
+ */
 import * as crowdDensity from "./crowdDensity.js";
 import * as wayfinding from "./wayfinding.js";
 import * as transport from "./transport.js";

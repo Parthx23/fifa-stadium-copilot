@@ -1,6 +1,10 @@
-// Minimal in-memory sliding-window rate limiter. Good enough for a single-
-// instance demo deployment; swap for a shared store (Redis) behind a load
-// balancer in production.
+/**
+ * @fileoverview Sliding-window rate limiter middleware.
+ * Tracks requests per IP using an in-memory Map with timestamp arrays.
+ * Suitable for single-instance deployments; swap for Redis-backed
+ * rate limiting behind a load balancer in production.
+ * @module middleware/rateLimiter
+ */
 
 const WINDOW_MS = 60_000;
 const MAX_REQUESTS_PER_WINDOW = 20;

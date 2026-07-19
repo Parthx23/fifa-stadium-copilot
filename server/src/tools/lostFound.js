@@ -1,3 +1,8 @@
+/**
+ * @fileoverview Lost & found search tool.
+ * Searches the logged lost & found inventory by partial item description.
+ * @module tools/lostFound
+ */
 import { LOST_FOUND_LOG } from "../data/mockStore.js";
 
 export const definition = {

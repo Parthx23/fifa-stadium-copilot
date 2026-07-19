@@ -1,3 +1,9 @@
+/**
+ * @fileoverview Transport status tool.
+ * Returns live status (on-time, minor-delay, major-delay) for a public transport
+ * or shuttle route serving the stadium.
+ * @module tools/transport
+ */
 import { transportStatusFor } from "../data/mockStore.js";
 
 export const definition = {

@@ -1,3 +1,9 @@
+/**
+ * @fileoverview Input sanitisation middleware for the /api/chat endpoint.
+ * Strips control characters, caps message length, and truncates history
+ * to prevent payload flooding and null-byte injection.
+ * @module middleware/sanitize
+ */
 const MAX_MESSAGE_LENGTH = 2000;
 const MAX_HISTORY_MESSAGES = 40;
 

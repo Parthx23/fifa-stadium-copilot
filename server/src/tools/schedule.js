@@ -1,3 +1,8 @@
+/**
+ * @fileoverview Match schedule tool.
+ * Returns upcoming matches at this venue, optionally filtered by team name or date.
+ * @module tools/schedule
+ */
 import { MATCHES } from "../data/mockStore.js";
 
 export const definition = {

@@ -1,3 +1,9 @@
+/**
+ * @fileoverview Accessible amenities tool.
+ * Returns accessibility information (restrooms, elevators, seating, sensory rooms)
+ * for a given stadium location.
+ * @module tools/accessibility
+ */
 import { accessibleAmenitiesFor } from "../data/mockStore.js";
 
 export const definition = {

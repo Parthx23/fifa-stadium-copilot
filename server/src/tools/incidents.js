@@ -1,3 +1,9 @@
+/**
+ * @fileoverview Incident reporting tool.
+ * Logs operational incidents (medical, crowding, lost child, facility, safety)
+ * and returns a unique incident ID with estimated response time.
+ * @module tools/incidents
+ */
 import { INCIDENT_LOG, nextIncidentId } from "../data/mockStore.js";
 
 export const definition = {

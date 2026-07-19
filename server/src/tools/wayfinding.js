@@ -1,3 +1,9 @@
+/**
+ * @fileoverview Wayfinding tool.
+ * Provides step-by-step directions between two points inside or around the stadium,
+ * with automatic support for accessible / step-free routes.
+ * @module tools/wayfinding
+ */
 export const definition = {
   name: "get_wayfinding",
   description:

@@ -1,3 +1,9 @@
+/**
+ * @fileoverview Gate crowd density tool.
+ * Returns the current crowd level and estimated wait time at a stadium entry gate.
+ * Data is derived from the deterministic mock store (seeded hash).
+ * @module tools/crowdDensity
+ */
 import { crowdLevelFor, GATES } from "../data/mockStore.js";
 
 export const definition = {
