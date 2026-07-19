@@ -9,7 +9,7 @@ import { rateLimiter } from "./middleware/rateLimiter.js";
 import { sanitizeChatBody } from "./middleware/sanitize.js";
 
 const PORT = process.env.PORT || 3001;
-const MODEL = process.env.GEMINI_MODEL || "gemini-2.0-flash";
+const MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
 const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || "http://localhost:5173";
 const MAX_TOOL_ROUNDS = 4;
 

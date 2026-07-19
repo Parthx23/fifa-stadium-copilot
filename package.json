@@ -2,6 +2,7 @@
   "name": "matchday-copilot",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "description": "GenAI stadium-ops assistant for FIFA World Cup 2026 — Fan, Volunteer, Organizer, and Venue Staff modes in one chat app.",
   "workspaces": ["server", "client"],
   "scripts": {
