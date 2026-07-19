@@ -23,7 +23,18 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
 
 const app = express();
 app.use(helmet());
-app.use(cors({ origin: CLIENT_ORIGIN }));
+const allowedOrigins = new Set([CLIENT_ORIGIN, "http://localhost:5173", "http://localhost:3000"]);
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.has(origin) || origin.endsWith(".vercel.app")) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+  })
+);
 app.use(express.json({ limit: "100kb" }));
 app.use(rateLimiter);
 
@@ -152,6 +163,10 @@ app.post("/api/chat", sanitizeChatBody, async (req, res) => {
 
 app.use((_req, res) => res.status(404).json({ error: "Not found" }));
 
-app.listen(PORT, () => {
-  console.log(`[matchday-copilot] server listening on http://localhost:${PORT}`);
-});
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`[matchday-copilot] server listening on http://localhost:${PORT}`);
+  });
+}
+
+export default app;
