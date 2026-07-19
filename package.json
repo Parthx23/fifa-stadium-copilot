@@ -5,11 +5,11 @@
   "description": "GenAI stadium-ops assistant for FIFA World Cup 2026 — Fan, Volunteer, Organizer, and Venue Staff modes in one chat app.",
   "workspaces": ["server", "client"],
   "scripts": {
-    "install:all": "npm install --workspace=server && npm install --workspace=client",
-    "test": "npm run test --workspace=server",
-    "dev:server": "npm run dev --workspace=server",
-    "dev:client": "npm run dev --workspace=client",
-    "build": "npm run build --workspace=client"
+    "install:all": "npm install --prefix server && npm install --prefix client",
+    "test": "npm run test --prefix server",
+    "dev:server": "npm run dev --prefix server",
+    "dev:client": "npm run dev --prefix client",
+    "build": "npm install --prefix client && npm run build --prefix client"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
