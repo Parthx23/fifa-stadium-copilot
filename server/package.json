@@ -1,0 +1,22 @@
+{
+  "name": "matchday-copilot-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Express API powering the Matchday Copilot stadium-ops assistant",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "node --env-file .env --watch src/index.js",
+    "start": "node --env-file .env src/index.js",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "helmet": "^8.0.0"
+  },
+  "devDependencies": {
+    "vitest": "^2.1.5"
+  }
+}
